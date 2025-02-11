@@ -1,34 +1,12 @@
-class StringBuilder {
-  #value; // Приватна властивість
+const input = document.querySelector('#name-input');
+const output = document.querySelector('#name-output');
 
-  constructor(initialValue) {
-    this.#value = initialValue;
+input.addEventListener('input', () => {
+  const inputValue = input.value.trim();
+  
+  if (inputValue === '') {
+    output.textContent = 'Anonymous';
+  } else {
+    output.textContent = inputValue;
   }
-
-  getValue() {
-    return this.#value;
-  }
-
-  padEnd(str) {
-    this.#value += str;
-  }
-
-  padStart(str) {
-    this.#value = str + this.#value;
-  }
-
-  padBoth(str) {
-    this.#value = str + this.#value + str;
-  }
-}
-
-// Код для перевірки
-const builder = new StringBuilder(".");
-console.log(builder.getValue()); // "."
-builder.padStart("^");
-console.log(builder.getValue()); // "^."
-builder.padEnd("^");
-console.log(builder.getValue()); // "^.^"
-builder.padBoth("=");
-console.log(builder.getValue()); // "=^.^="
-
+});
